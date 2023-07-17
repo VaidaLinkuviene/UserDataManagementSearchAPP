@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Quicksand:wght@700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    height: 10vh;
+    background-color: #f2f2f2;
+    margin-top: 0;
+    border-bottom: 1px solid lightgrey;
+}
+.logo{
+    font-family: "Quicksand";
+    color:blueviolet;
+    font-size: 50px;
+    padding-top: 10px;
+    margin-left: 15px;
+}
+

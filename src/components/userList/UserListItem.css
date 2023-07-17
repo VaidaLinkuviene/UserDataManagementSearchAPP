@@ -1,0 +1,16 @@
+.title{
+    margin-left: 10vw;
+    text-decoration: underline;
+    color: blueviolet;
+    margin-top: 100px;
+}
+
+.table{
+    width: 80vw !important;
+    margin: auto;
+
+}
+
+thead tr{
+    border-bottom: 1px solid grey;
+}

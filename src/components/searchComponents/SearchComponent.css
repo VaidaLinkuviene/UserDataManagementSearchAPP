@@ -1,0 +1,39 @@
+.searchInput{
+    display: block;
+    margin: auto;
+    height: 45px;
+    width: 500px;
+    margin-top: 30px;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.foundUser{
+    width: 30vw;
+    display:inline-block;
+    margin: 20px;
+}
+
+.userInfo{
+    display: flex;
+}
+
+.nameEmail{
+    margin-left: 10px;
+}
+
+.diagnosis{
+    display: flex;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.mainInfo{
+    display: flex;
+    margin-top: 40px;
+}
+
+.description{
+    margin-right: 5px;
+}
