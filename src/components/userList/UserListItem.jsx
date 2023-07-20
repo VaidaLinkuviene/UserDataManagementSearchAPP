@@ -1,13 +1,14 @@
 import React from 'react';
-import './UserListItem.css'
+import './UserListItem.css';
+import {users} from '../../data'
 
-const UserListItem = ({ title, users }) => {
+const UserListItem = () => {
     return (
-        <div className='users-list'>
-            <h4 className='title'>{title}</h4>
+        <div className='usersList'>
+            <h4 className='title'>All users</h4>
 
 
-            <table class="table table-striped">
+            <table className="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -18,7 +19,7 @@ const UserListItem = ({ title, users }) => {
                 </thead>
                 <tbody>
                     {users.map((user) => (
-                        <tr >
+                        <tr key={user.id}>
                             <th scope="row">{user.id}</th>
                             <td>{user.first_name}</td>
                             <td>{user.last_name}</td>

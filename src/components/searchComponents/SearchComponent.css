@@ -8,10 +8,22 @@
     margin-bottom: 30px;
 }
 
+.wrapper{
+display: flex;
+flex-wrap: wrap;
+
+}
+
+/* .wrapperItem{
+    float:left;
+} */
+
 .foundUser{
+
     width: 30vw;
-    display:inline-block;
     margin: 20px;
+    height: 200px;
+
 }
 
 .userInfo{
