@@ -1,12 +1,14 @@
-import React from 'react';
-import './UserListItem.css';
-import {users} from '../../data'
+import React, {useState, useEffect} from 'react';
+import './UserList.css';
+import {users} from '../../data';
 
-const UserListItem = () => {
+
+const UserList = ({posts}) => {
+
+    
     return (
         <div className='usersList'>
-            <h4 className='title'>All users</h4>
-
+            <h4 className='title'>All users:</h4>
 
             <table className="table table-striped">
                 <thead>
@@ -18,7 +20,7 @@ const UserListItem = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map((user) => (
+                    {posts.map((user) => (
                         <tr key={user.id}>
                             <th scope="row">{user.id}</th>
                             <td>{user.first_name}</td>
@@ -33,4 +35,4 @@ const UserListItem = () => {
 }
 
 
-export default UserListItem;
+export default UserList;

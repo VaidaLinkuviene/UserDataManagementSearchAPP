@@ -1,0 +1,8 @@
+.pagination{
+    float: right;
+    margin-right: 10vw;
+}
+
+.page-link{
+    color: blueviolet !important;
+}

@@ -1,14 +1,27 @@
-import React from 'react';
-import './Popup.css'
+import React, { useState } from 'react';
+import './Popup.css';
 
 const Popup = (props) => {
 
-  const {user} = props;
- 
+  const {user, addUserToList} = props;
+  const [userAddedList, setUserAddedList] = useState([]);
+
+  if(!user || !user.id){
+    return null;
+  }
+
+  const isUserAdded = userAddedList.includes(user.id)
+
+  const handleAddUserToList= (item) => {
+    addUserToList(user);
+    setUserAddedList(prevList => [...prevList, user.id]);
+    props.setTrigger(false)
+  }
+
   return (props.trigger) ? (
     <div className='popup'>
         <div className="popupInner">
-            <button className='closeButton' onClick={()=>props.setTrigger(false)}>Close</button>
+            <button type='button' className='btn-close' aria-label='Close' onClick={()=>props.setTrigger(false)}></button>
             <div>
             <img className='userPhoto' src={user.photo} alt={user.first_name} />
           <div className='nameEmail'>
@@ -32,9 +45,11 @@ const Popup = (props) => {
           </div>{' '}
           {user.Drug}
         </div>
+        <button className={`addButton ${isUserAdded ? 'addedButton' : ''}`} onClick={handleAddUserToList} disabled={isUserAdded}>{isUserAdded ? "Added to the list" : "Add to the list"}</button>
       </div>
     </div>
   ) : null;
 };
+
 
 export default Popup

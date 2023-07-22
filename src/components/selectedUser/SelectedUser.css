@@ -1,0 +1,14 @@
+.selectedUser{
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.deleteButton{
+border: none;
+background-color: #fff;
+}
+
+.noUsersSelected{
+    margin-left: 10vw;
+}

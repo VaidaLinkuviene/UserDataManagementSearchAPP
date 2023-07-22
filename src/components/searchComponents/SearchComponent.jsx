@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchComponent.css';
 import Popup from '../popupComponent/Popup';
+import SelectedUser from '../selectedUser/SelectedUser';
 
 const SearchComponent = ({ users }) => {
 
   const [search, setSearch] = useState('');
   const [selectedUser, setSelectedUser] = useState();
   const [buttonPopup, setButtonPopup] = useState(false);
+  const [clickedUser, setClickedUser] = useState([]);
 
   const handleUser = (user) => {
     setSelectedUser(user);
     setButtonPopup(true);
+  }
+
+  useEffect(()=>{
+    console.log(clickedUser)
+  })
+
+  const addUserToList = (chosenUser) => {
+    setClickedUser(prevUser => [...prevUser, chosenUser]);
   }
 
   return (
@@ -34,8 +44,9 @@ const SearchComponent = ({ users }) => {
           </div>
         ))}
       </div>
-      {selectedUser && (<Popup trigger={buttonPopup} setTrigger={setButtonPopup} user={selectedUser}/>
+      {selectedUser && (<Popup trigger={buttonPopup} setTrigger={setButtonPopup} user={selectedUser} addUserToList={addUserToList}/>
   )}
+  <SelectedUser clickedUser={clickedUser} setClickedUser={setClickedUser}/>
       </div>
   )
 }

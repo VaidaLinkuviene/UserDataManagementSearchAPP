@@ -11,15 +11,10 @@
 .wrapper{
 display: flex;
 flex-wrap: wrap;
-
+margin-bottom: 30px;
 }
 
-/* .wrapperItem{
-    float:left;
-} */
-
 .foundUser{
-
     width: 30vw;
     margin: 20px;
     height: 200px;
