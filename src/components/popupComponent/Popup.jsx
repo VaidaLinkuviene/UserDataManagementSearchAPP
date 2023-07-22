@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Popup.css';
 
 const Popup = (props) => {
 
-  const {user, addUserToList} = props;
-  const [userAddedList, setUserAddedList] = useState([]);
+  const {user, addUserToList, userAddedList } = props;
+  const [isUserAdded, setIsUserAdded] = useState(false);
+
+  useEffect(()=>{
+    if(user && user.id && userAddedList){
+    setIsUserAdded(userAddedList.includes(user.id));
+    }
+  }, [userAddedList, user]);
 
   if(!user || !user.id){
     return null;
   }
 
-  const isUserAdded = userAddedList.includes(user.id)
-
-  const handleAddUserToList= (item) => {
+  const handleAddUserToList= () => {
     addUserToList(user);
-    setUserAddedList(prevList => [...prevList, user.id]);
+    setIsUserAdded(true);
     props.setTrigger(false)
   }
 

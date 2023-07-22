@@ -8,19 +8,22 @@ const SearchComponent = ({ users }) => {
   const [search, setSearch] = useState('');
   const [selectedUser, setSelectedUser] = useState();
   const [buttonPopup, setButtonPopup] = useState(false);
-  const [clickedUser, setClickedUser] = useState([]);
+  const [clickedUser, setClickedUser] = useState([]);  
+  const [userAddedList, setUserAddedList] = useState([]);
+
+  useEffect(() => {
+    const updatedUserAddedList = clickedUser.map((user) => user.id);
+    setUserAddedList(updatedUserAddedList);
+  }, [clickedUser]);
 
   const handleUser = (user) => {
     setSelectedUser(user);
     setButtonPopup(true);
   }
 
-  useEffect(()=>{
-    console.log(clickedUser)
-  })
-
   const addUserToList = (chosenUser) => {
     setClickedUser(prevUser => [...prevUser, chosenUser]);
+    setUserAddedList((prevList) => [...prevList, chosenUser.id]);
   }
 
   return (
@@ -44,7 +47,7 @@ const SearchComponent = ({ users }) => {
           </div>
         ))}
       </div>
-      {selectedUser && (<Popup trigger={buttonPopup} setTrigger={setButtonPopup} user={selectedUser} addUserToList={addUserToList}/>
+      {selectedUser && (<Popup trigger={buttonPopup} setTrigger={setButtonPopup} user={selectedUser} addUserToList={addUserToList} userAddedList={userAddedList}/>
   )}
   <SelectedUser clickedUser={clickedUser} setClickedUser={setClickedUser}/>
       </div>
