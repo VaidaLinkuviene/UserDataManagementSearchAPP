@@ -1,31 +1,34 @@
-import React, { useState } from 'react';
-import './Popup.css';
+import React, { useState } from "react";
+import "./Popup.css";
 
-const Popup = (props) => {
-
-  const {user, addUserToList} = props;
+const Popup = ({ trigger, setTrigger, user, addUserToList }) => {
   const [userAddedList, setUserAddedList] = useState([]);
 
-  if(!user || !user.id){
-    return null;
+  if (!user) {
+    return <h1>Some component that says user not found</h1>;
   }
 
-  const isUserAdded = userAddedList.includes(user.id)
+  const isUserAdded = userAddedList.includes(user.id);
 
-  const handleAddUserToList= (item) => {
+  const handleAddUserToList = (item) => {
     addUserToList(user);
-    setUserAddedList(prevList => [...prevList, user.id]);
-    props.setTrigger(false)
-  }
+    setUserAddedList((prevList) => [...prevList, user.id]);
+    setTrigger(false);
+  };
 
-  return (props.trigger) ? (
-    <div className='popup'>
-        <div className="popupInner">
-            <button type='button' className='btn-close' aria-label='Close' onClick={()=>props.setTrigger(false)}></button>
-            <div>
-            <img className='userPhoto' src={user.photo} alt={user.first_name} />
-          <div className='nameEmail'>
-            <div className='mainInfo' style={{fontWeight: 800}}>
+  return trigger ? (
+    <div className="popup">
+      <div className="popupInner">
+        <button
+          type="button"
+          className="btn-close"
+          aria-label="Close"
+          onClick={() => setTrigger(false)}
+        ></button>
+        <div>
+          <img className="userPhoto" src={user.photo} alt={user.first_name} />
+          <div className="nameEmail">
+            <div className="mainInfo" style={{ fontWeight: 800 }}>
               {user.first_name} {user.last_name} ({user.gender})
             </div>
             <div>Email: {user.email}</div>
@@ -33,23 +36,28 @@ const Popup = (props) => {
             <div>Address: {user.address}</div>
           </div>
         </div>
-        <div className='diagnosis'>
-          <div className='description' style={{ fontStyle: 'italic' }}>
+        <div className="diagnosis">
+          <div className="description" style={{ fontStyle: "italic" }}>
             Description:
-          </div>{' '}
+          </div>{" "}
           {user.description}
         </div>
-        <div className='diagnosis'>
-          <div className='description' style={{ fontStyle: 'italic' }}>
+        <div className="diagnosis">
+          <div className="description" style={{ fontStyle: "italic" }}>
             Medication:
-          </div>{' '}
+          </div>{" "}
           {user.Drug}
         </div>
-        <button className={`addButton ${isUserAdded ? 'addedButton' : ''}`} onClick={handleAddUserToList} disabled={isUserAdded}>{isUserAdded ? "Added to the list" : "Add to the list"}</button>
+        <button
+          className={`addButton ${isUserAdded ? "addedButton" : ""}`}
+          onClick={handleAddUserToList}
+          disabled={isUserAdded}
+        >
+          {isUserAdded ? "Added to the list" : "Add to the list"}
+        </button>
       </div>
     </div>
   ) : null;
 };
 
-
-export default Popup
+export default Popup;
