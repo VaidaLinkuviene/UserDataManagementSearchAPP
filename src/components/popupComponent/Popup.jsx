@@ -1,8 +1,17 @@
-import React, { useState } from "react";
-import "./Popup.css";
 
-const Popup = ({ trigger, setTrigger, user, addUserToList }) => {
-  const [userAddedList, setUserAddedList] = useState([]);
+import React, { useState, useEffect } from 'react';
+import './Popup.css';
+
+const Popup = (props) => {
+
+  const {user, addUserToList, userAddedList } = props;
+  const [isUserAdded, setIsUserAdded] = useState(false);
+
+  useEffect(()=>{
+    if(user && user.id && userAddedList){
+    setIsUserAdded(userAddedList.includes(user.id));
+    }
+  }, [userAddedList, user]);
 
   if (!user) {
     return <h1>Some component that says user not found</h1>;
@@ -29,6 +38,7 @@ const Popup = ({ trigger, setTrigger, user, addUserToList }) => {
           <img className="userPhoto" src={user.photo} alt={user.first_name} />
           <div className="nameEmail">
             <div className="mainInfo" style={{ fontWeight: 800 }}>
+
               {user.first_name} {user.last_name} ({user.gender})
             </div>
             <div>Email: {user.email}</div>
